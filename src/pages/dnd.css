@@ -1,0 +1,62 @@
+.dndhome {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.dndhome ul {
+  padding-left: 13px;
+  align-self: self-start;
+}
+
+.card-wrapper {
+  background: #f2f2f3;
+  padding: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(230, 230, 230);
+}
+
+.dnd-card {
+  width: 60vw;
+  height: 450px;
+  padding: 15px 35px;
+  background: white;
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+}
+
+.instructions {
+  color: rgb(106, 117, 122);
+  line-height: 20px;
+}
+
+.dnd-area {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.droppable {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+}
+
+.sortable-placeholder {
+  background-color: #ddd;
+  border: 2px dashed #888;
+  height: 50px; /* Adjust height as needed */
+}
+
+.exclude-me {
+  opacity: 0.01;
+}
+
+.hidden {
+  visibility: hidden;
+}

@@ -1,0 +1,20 @@
+.dnd-option {
+  height: 60px;
+  background-color: #73eacc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  align-items: center;
+  user-select: none;
+  width: 100%;
+  cursor: move;
+}
+
+.dnd-option :hover {
+  cursor: pointer;
+}
+
+.dnd-option img {
+  width: 30px;
+}

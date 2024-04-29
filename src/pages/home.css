@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (max-width: 80rem) {
+  .home {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,19 @@
+.card {
+  border: 1px solid black;
+  border-radius: 12px;
+  min-width: 400px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task {
+  background: rgba(0, 0, 255, 0.35);
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+  font-weight: bold;
+}
