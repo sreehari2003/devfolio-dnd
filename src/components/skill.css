@@ -18,3 +18,14 @@
 .dnd-option img {
   width: 30px;
 }
+
+.skill-provider {
+  background-color: white;
+  border: 1px solid (128, 128, 128, 0.472);
+  padding: 0%;
+}
+
+.select {
+  width: 100%;
+  border: 0px solid white;
+}

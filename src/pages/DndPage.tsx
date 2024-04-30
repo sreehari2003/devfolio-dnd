@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Skill } from "../components";
+import { useEffect, useMemo, useState } from "react";
+import { Skill, AddSkills } from "../components";
 import "./dnd.css";
 
 interface DragInfo {
@@ -7,7 +7,12 @@ interface DragInfo {
   dragIndex: number | null;
 }
 
-const skillsTemp = [
+type Skils = {
+  name: null | string;
+  index: number;
+};
+
+const skillsTemp: Skils[] = [
   {
     name: "haskel",
     index: 1,
@@ -24,22 +29,6 @@ const skillsTemp = [
     name: "oop",
     index: 4,
   },
-  {
-    name: "js",
-    index: 5,
-  },
-  {
-    name: "React",
-    index: 6,
-  },
-  {
-    name: "ts",
-    index: 7,
-  },
-  {
-    name: "go",
-    index: 8,
-  },
 ];
 
 export const DndPage = () => {
@@ -50,11 +39,24 @@ export const DndPage = () => {
     dragIndex: null,
   });
 
-  const [sectionOne, sectionTwo] = useMemo(() => {
+  useEffect(() => {
+    const skillSet = [...skills]; // Create a copy of the original skills array
+    const desiredLength = 10; // Desired length of the array
+
+    // Fill the array with objects having name set to null and index set to -1
+    while (skillSet.length < desiredLength) {
+      skillSet.push({ name: null, index: -1 });
+    }
+
+    console.log(skillSet);
+    setSkills(skillSet); // Update the state with the new array
+  }, []);
+
+  const { sectionOne, sectionTwo } = useMemo(() => {
     const sectionOne = skills.slice(0, 5);
     const sectionTwo = skills.slice(5, 10);
 
-    return [sectionOne, sectionTwo];
+    return { sectionOne, sectionTwo };
   }, [skills]);
 
   const handleDragStart = (
@@ -109,28 +111,40 @@ export const DndPage = () => {
           </p>
           <section className="dnd-area">
             <div className="droppable">
-              {sectionOne.map(({ name, index }) => (
-                <Skill
-                  text={name}
-                  key={index}
-                  index={index}
-                  onDragStart={handleDragStart}
-                  onDragEnd={handleDragEnd}
-                  onDrop={handleOnDrop}
-                />
-              ))}
+              {sectionOne.map(({ name, index }) => {
+                if (name) {
+                  return (
+                    <Skill
+                      text={name}
+                      key={index}
+                      index={index}
+                      onDragStart={handleDragStart}
+                      onDragEnd={handleDragEnd}
+                      onDrop={handleOnDrop}
+                    />
+                  );
+                } else {
+                  return <AddSkills key={index} />;
+                }
+              })}
             </div>
             <div className="droppable">
-              {sectionTwo.map(({ name, index }) => (
-                <Skill
-                  text={name}
-                  key={index}
-                  index={index}
-                  onDragStart={handleDragStart}
-                  onDragEnd={handleDragEnd}
-                  onDrop={handleOnDrop}
-                />
-              ))}
+              {sectionTwo.map(({ name, index }) => {
+                if (name) {
+                  return (
+                    <Skill
+                      text={name}
+                      key={index}
+                      index={index}
+                      onDragStart={handleDragStart}
+                      onDragEnd={handleDragEnd}
+                      onDrop={handleOnDrop}
+                    />
+                  );
+                } else {
+                  return <AddSkills key={index} />;
+                }
+              })}
             </div>
           </section>
         </div>
