@@ -1,7 +1,7 @@
 .dnd-option {
   height: 60px;
   background-color: #73eacc;
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   padding: 0px 10px;
@@ -22,7 +22,7 @@
 .skill-provider {
   background-color: white;
   border: 1px solid (128, 128, 128, 0.472);
-  padding: 0%;
+  background-color: red;
 }
 
 .select {

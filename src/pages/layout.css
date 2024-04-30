@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  margin-bottom: 8em;
+}
+
+.layout-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.hollow-red-rectangle {
+  display: block;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  top: 40%;
+  left: 1%;
+  border: 18px solid #e7084b;
+  transform: rotate(-10deg);
+}
+
+.hollow-blue-rectangle {
+  display: block;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  top: 15%;
+  left: 10%;
+  border: 12px solid #0065f5;
+  transform: rotate(45deg);
+}
+
+.filled-pink-rectangle {
+  display: block;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  top: 12%;
+  left: 24%;
+  border: 14px solid #fe709b;
+}
+
+.filled-blue-rectangle {
+  display: block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 32%;
+  border: 8px solid #0065f5;
+  transform: rotate(45deg);
+}
+
+.hollow-pink-rectangle {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  top: 22%;
+  left: 47%;
+  border: 14px solid #fe709b;
+}
+
+.title-number {
+  font-size: 24rem;
+  font-weight: bold;
+  color: #007ffa;
+  text-align: center;
+}
+
+.title {
+  position: relative;
+  bottom: 80px;
+  font-size: 7.4rem;
+  font-weight: bold;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sub-title {
+  font-size: 6.4rem;
+}
+
+.footer {
+  margin-left: 2em;
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  line-height: 1.8;
+}
+
+.blurred-circle {
+  display: block;
+  z-index: 3;
+  position: absolute;
+  width: 172px;
+  height: 172px;
+  top: 29%;
+  left: 85%;
+  border: 28px solid #f3b018;
+  border-radius: 50%;
+  filter: blur(6px);
+}
+
+.sub-footer {
+  font-size: 1.63rem;
+  font-weight: 500;
+}
+
+.last_footer_text {
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.sub-sub-footer {
+  font-size: 1.38rem;
+  font-weight: 500;
+}
+
+.third-layer_footer {
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+.last_footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.last_footer span {
+  flex: 1;
+  width: 100%;
+  margin: 0px 0px 0px 8px;
+  height: 8px;
+  background-color: #1c1c1c;
+}
+
+.sub-title span {
+  font-size: 6rem;
+  letter-spacing: -4px;
+}
+
+@media (max-width: 768px) {
+  .hollow-red-rectangle {
+    width: 45px;
+    height: 45px;
+    top: 40%;
+    left: 1%;
+    border: 9px solid #e7084b;
+  }
+
+  .hollow-blue-rectangle {
+    width: 17px;
+    height: 17px;
+    top: 15%;
+    left: 10%;
+    border: 6px solid #0065f5;
+  }
+
+  .filled-pink-rectangle {
+    width: 14px;
+    height: 14px;
+    top: 12%;
+    left: 24%;
+    border: 7px solid #fe709b;
+  }
+
+  .filled-blue-rectangle {
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    left: 32%;
+    border: 4px solid #0065f5;
+  }
+
+  .hollow-pink-rectangle {
+    width: 25px;
+    height: 25px;
+    top: 22%;
+    left: 47%;
+    border: 7px solid #fe709b;
+  }
+
+  .title-number {
+    font-size: 12rem;
+  }
+
+  .sub-title {
+    font-size: 3.6rem;
+  }
+
+  .sub-title span {
+    font-size: 3.2rem;
+    letter-spacing: -2px;
+  }
+
+  .footer {
+    font-size: 1rem;
+  }
+  .title {
+    font-size: 4.4rem;
+    bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .sub-footer {
+    font-size: 0.815rem;
+  }
+
+  .sub-sub-footer {
+    font-size: 0.69rem;
+  }
+
+  .third-layer_footer {
+    font-size: 0.48rem;
+  }
+
+  .last_footer_text {
+    font-size: 0.38rem;
+  }
+
+  .last_footer span {
+    height: 3px;
+  }
+
+  .blurred-circle {
+    width: 86px;
+    height: 86px;
+    top: 32%;
+    left: 85%;
+    border: 14px solid #f3b018;
+    filter: blur(4px);
+  }
+}

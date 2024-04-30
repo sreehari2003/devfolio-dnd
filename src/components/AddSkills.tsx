@@ -7,10 +7,27 @@ const options = [
   { value: "vanilla", label: "Vanilla" },
 ];
 
-export const AddSkills = () => {
+interface Props {
+  index: number;
+  isActive: boolean;
+  updateSkills: (index: number, val: string | undefined) => void;
+}
+
+export const AddSkills = ({ index, isActive, updateSkills }: Props) => {
   return (
-    <div className="dnd-option skill-provider">
-      <Select options={options} className="select" />
-    </div>
+    <Select
+      options={options}
+      className="select"
+      isDisabled={isActive}
+      placeholder={`${index}.Add Skill`}
+      styles={{
+        control: (baseStyle, state) => ({
+          ...baseStyle,
+          borderColor: state.isFocused ? "#73eacc" : "grey",
+          height: "60px",
+        }),
+      }}
+      onChange={(e) => updateSkills(index, e?.value)}
+    />
   );
 };

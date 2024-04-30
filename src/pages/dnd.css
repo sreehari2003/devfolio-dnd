@@ -40,6 +40,15 @@
   gap: 60px;
 }
 
+@media screen and (max-width: 50rem) {
+  .dnd-area {
+    flex-direction: column;
+  }
+  .dnd-card {
+    overflow-y: scroll;
+  }
+}
+
 .droppable {
   display: flex;
   flex-direction: column;

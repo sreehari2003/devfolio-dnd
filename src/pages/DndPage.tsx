@@ -29,6 +29,10 @@ const skillsTemp: Skils[] = [
     name: "oop",
     index: 4,
   },
+  {
+    name: "fp",
+    index: 5,
+  },
 ];
 
 export const DndPage = () => {
@@ -39,18 +43,33 @@ export const DndPage = () => {
     dragIndex: null,
   });
 
-  useEffect(() => {
-    const skillSet = [...skills]; // Create a copy of the original skills array
-    const desiredLength = 10; // Desired length of the array
+  const activeSkillsSize = useMemo(
+    () => skills.filter(({ name }) => name !== null).length,
+    [skills]
+  );
 
-    // Fill the array with objects having name set to null and index set to -1
-    while (skillSet.length < desiredLength) {
+  useEffect(() => {
+    const skillSet = [...skills];
+    while (skillSet.length < 10) {
       skillSet.push({ name: null, index: -1 });
     }
-
-    console.log(skillSet);
-    setSkills(skillSet); // Update the state with the new array
+    skillSet.forEach((skill, index) => {
+      skill.index = index + 1;
+    });
+    setSkills(skillSet);
   }, []);
+
+  const updateSkills = (index: number, val: string | undefined) => {
+    if (!val) return;
+
+    const updatedSkills = skills.map((skill) => {
+      if (skill.index === index) {
+        return { ...skill, name: val };
+      }
+      return skill;
+    });
+    setSkills(updatedSkills);
+  };
 
   const { sectionOne, sectionTwo } = useMemo(() => {
     const sectionOne = skills.slice(0, 5);
@@ -112,6 +131,7 @@ export const DndPage = () => {
           <section className="dnd-area">
             <div className="droppable">
               {sectionOne.map(({ name, index }) => {
+                const isActive = index === activeSkillsSize + 1;
                 if (name) {
                   return (
                     <Skill
@@ -124,12 +144,20 @@ export const DndPage = () => {
                     />
                   );
                 } else {
-                  return <AddSkills key={index} />;
+                  return (
+                    <AddSkills
+                      key={index}
+                      index={index}
+                      isActive={!isActive}
+                      updateSkills={updateSkills}
+                    />
+                  );
                 }
               })}
             </div>
             <div className="droppable">
               {sectionTwo.map(({ name, index }) => {
+                const isActive = index === activeSkillsSize + 1;
                 if (name) {
                   return (
                     <Skill
@@ -142,7 +170,14 @@ export const DndPage = () => {
                     />
                   );
                 } else {
-                  return <AddSkills key={index} />;
+                  return (
+                    <AddSkills
+                      key={index}
+                      index={index}
+                      isActive={!isActive}
+                      updateSkills={updateSkills}
+                    />
+                  );
                 }
               })}
             </div>
