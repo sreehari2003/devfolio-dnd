@@ -1,19 +1,22 @@
 import Select from "react-select";
 import "./skill.css";
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+import { useMemo } from "react";
 
 interface Props {
   index: number;
   isActive: boolean;
-  updateSkills: (index: number, val: string | undefined) => void;
+  skills: string[];
+  updateSkills: (index: number, val: string | null) => void;
 }
 
-export const AddSkills = ({ index, isActive, updateSkills }: Props) => {
+export const AddSkills = ({ index, isActive, updateSkills, skills }: Props) => {
+  const options = useMemo(() => {
+    return skills.map((value) => ({
+      label: value,
+      value: value,
+    }));
+  }, [skills]);
+
   return (
     <Select
       options={options}
@@ -27,7 +30,7 @@ export const AddSkills = ({ index, isActive, updateSkills }: Props) => {
           height: "60px",
         }),
       }}
-      onChange={(e) => updateSkills(index, e?.value)}
+      onChange={(e) => updateSkills(index, e?.value || null)}
     />
   );
 };

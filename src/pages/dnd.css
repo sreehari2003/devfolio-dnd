@@ -19,6 +19,11 @@
   border: 1px solid rgb(230, 230, 230);
 }
 
+.card-wrapper ul li {
+  position: relative;
+  bottom: 15px;
+}
+
 .dnd-card {
   width: 60vw;
   height: 450px;
@@ -68,4 +73,15 @@
 
 .hidden {
   visibility: hidden;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.loader h1 {
+  font-size: 60px;
 }
