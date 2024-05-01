@@ -3,7 +3,7 @@ import { apiClient } from "../config/apiClient";
 
 type Skills = {
   name: null | string;
-  index: number;
+  id: number;
 };
 
 export const useUserTags = () => {
@@ -18,6 +18,17 @@ export const useUserTags = () => {
       if (error) {
         throw new Error("Error fetching data");
       }
+
+      data.sort((a, b) => {
+        if (a.name === null && b.name !== null) {
+          return 1;
+        } else if (a.name !== null && b.name === null) {
+          return -1;
+        } else {
+          return a.id - b.id;
+        }
+      });
+
       setTags(data as Array<Skills>);
     } catch (e) {
       setError("Failed to load tags");
@@ -26,8 +37,56 @@ export const useUserTags = () => {
     }
   };
 
-  const updateUserTags = (data: Skills[]) => {
+  const updateUserTags = async (data: Skills[], index: number, val: string) => {
     setTags(data);
+    await apiClient
+      .from("tags")
+      .update({
+        name: val,
+      })
+      .eq("id", index);
+
+    data.sort((a, b) => {
+      if (a.name === null && b.name !== null) {
+        return 1;
+      } else if (a.name !== null && b.name === null) {
+        return -1;
+      } else {
+        return a.id - b.id;
+      }
+    });
+  };
+
+  const deleteTags = async (id: number) => {
+    const newTags = tags.map((el) => {
+      if (el.id === id) {
+        return {
+          ...el,
+          name: null,
+        };
+      } else {
+        return el;
+      }
+    });
+
+    newTags.sort((a, b) => {
+      if (a.name === null && b.name !== null) {
+        return 1;
+      } else if (a.name !== null && b.name === null) {
+        return -1;
+      } else {
+        return a.id - b.id;
+      }
+    });
+
+    setTags(newTags);
+
+    await apiClient
+      .from("tags")
+      .update({
+        name: null,
+      })
+      .eq("id", id);
   };
 
   useEffect(() => {
@@ -40,5 +99,6 @@ export const useUserTags = () => {
     error,
     loadUserTags: getTags,
     updateUserTags,
+    deleteTags,
   };
 };

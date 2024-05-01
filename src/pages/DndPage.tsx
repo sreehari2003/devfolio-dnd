@@ -1,6 +1,6 @@
+import "./dnd.css";
 import { useMemo, useState } from "react";
 import { Skill, AddSkills } from "../components";
-import "./dnd.css";
 import { useTags } from "../hooks/useTags";
 import { useUserTags } from "../hooks/useUserTag";
 
@@ -16,6 +16,7 @@ export const DndPage = () => {
     isLoading: isUserTagsLoading,
     userTags,
     updateUserTags,
+    deleteTags,
   } = useUserTags();
 
   const [dragInfo, setDragInfo] = useState<DragInfo>({
@@ -28,19 +29,17 @@ export const DndPage = () => {
     [userTags]
   );
 
-  console.log(activeSkillsSize);
-
   const updateSkills = (index: number, val: string | null) => {
     if (!val) return;
 
     const updatedSkills = userTags.map((skill) => {
-      if (skill.index === index) {
+      if (skill.id === index) {
         return { ...skill, name: val };
       }
       return skill;
     });
 
-    updateUserTags(updatedSkills);
+    updateUserTags(updatedSkills, index, val);
   };
 
   const { sectionOne, sectionTwo } = useMemo(() => {
@@ -79,14 +78,18 @@ export const DndPage = () => {
   ) => {
     e.preventDefault();
 
+    document.querySelectorAll(".slide").forEach((el) => {
+      el.classList.toggle("margin-from-bottom", false);
+      el.classList.toggle("margin-from-top", false);
+    });
+
     if (dragInfo.dragIndex === dropIndex) return;
 
-    // const newSkills = [...skills];
-    // const draggedSkill = newSkills.splice(dragInfo.dragIndex!, 1)[0];
-    // newSkills.splice(dropIndex, 0, draggedSkill);
+    const newSkills = [...userTags];
+    const draggedSkill = newSkills.splice(dragInfo.dragIndex!, 1)[0];
+    newSkills.splice(dropIndex, 0, draggedSkill);
 
-    // console.log("Skills reordered:", newSkills);
-    // setSkills(newSkills);
+    console.log("Skills reordered:", newSkills);
   };
 
   return (
@@ -107,24 +110,27 @@ export const DndPage = () => {
           ) : (
             <section className="dnd-area">
               <div className="droppable">
-                {sectionOne.map(({ name, index }) => {
-                  const isActive = index === activeSkillsSize + 1;
+                {sectionOne.map(({ name, id }, index) => {
+                  const isActive = index === activeSkillsSize;
                   if (name) {
                     return (
                       <Skill
                         text={name}
-                        key={index}
-                        index={index}
+                        key={id}
+                        index={index + 1}
+                        id={id}
                         onDragStart={handleDragStart}
                         onDragEnd={handleDragEnd}
                         onDrop={handleOnDrop}
+                        deleteTag={deleteTags}
+                        activeIndex={dragInfo.dragIndex as number}
                       />
                     );
                   } else {
                     return (
                       <AddSkills
-                        key={index}
-                        index={index}
+                        key={id}
+                        index={id}
                         isActive={!isActive}
                         updateSkills={updateSkills}
                         skills={tags}
@@ -134,24 +140,27 @@ export const DndPage = () => {
                 })}
               </div>
               <div className="droppable">
-                {sectionTwo.map(({ name, index }) => {
-                  const isActive = index === activeSkillsSize + 1;
+                {sectionTwo.map(({ name, id }, index) => {
+                  const isActive = id === activeSkillsSize + 1;
                   if (name) {
                     return (
                       <Skill
                         text={name}
-                        key={index}
-                        index={index}
+                        key={id}
+                        id={id}
+                        index={index + 6}
                         onDragStart={handleDragStart}
                         onDragEnd={handleDragEnd}
                         onDrop={handleOnDrop}
+                        deleteTag={deleteTags}
+                        activeIndex={dragInfo.dragIndex as number}
                       />
                     );
                   } else {
                     return (
                       <AddSkills
-                        key={index}
-                        index={index}
+                        key={id}
+                        index={id}
                         isActive={!isActive}
                         updateSkills={updateSkills}
                         skills={tags}
