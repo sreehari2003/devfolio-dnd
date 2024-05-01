@@ -85,16 +85,9 @@ export const DndPage = () => {
     });
 
     const newSkills = [...userTags];
-    const dropData = newSkills[dropIndex - 1];
+    const [removedSkill] = newSkills.splice(dragInfo.dragIndex!, 1);
+    newSkills.splice(dropIndex - 1, 0, removedSkill);
 
-    console.log(
-      dropData,
-      newSkills[dragInfo.dragIndex!],
-      dropIndex - 1,
-      dragInfo.dragIndex
-    );
-    newSkills[dropIndex - 1] = newSkills[dragInfo.dragIndex!];
-    newSkills[dragInfo.dragIndex!] = dropData;
     reorder(newSkills);
     handleDragEnd();
   };
