@@ -57,6 +57,10 @@ export const useUserTags = () => {
     });
   };
 
+  const reorder = (data: Skills[]) => {
+    setTags(data);
+  };
+
   const deleteTags = async (id: number) => {
     const newTags = tags.map((el) => {
       if (el.id === id) {
@@ -100,5 +104,6 @@ export const useUserTags = () => {
     loadUserTags: getTags,
     updateUserTags,
     deleteTags,
+    reorder,
   };
 };

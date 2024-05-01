@@ -23,15 +23,21 @@ export const Skill = ({
 }: Prop) => {
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    e.currentTarget.classList.add("onTop");
     if (activeIndex > index) {
-      e.currentTarget.classList.add("margin-from-bottom");
+      if (!e.currentTarget.classList.contains("margin-from-bottom")) {
+        e.currentTarget.classList.add("margin-from-bottom");
+      }
     } else {
-      e.currentTarget.classList.add("margin-from-top");
+      if (!e.currentTarget.classList.contains("margin-from-top")) {
+        e.currentTarget.classList.add("margin-from-top");
+      }
     }
   };
 
   const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    e.currentTarget.classList.remove("onTop");
     e.currentTarget.classList.remove("margin-from-bottom");
     e.currentTarget.classList.remove("margin-from-top");
   };

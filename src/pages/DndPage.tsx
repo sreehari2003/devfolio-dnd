@@ -17,6 +17,7 @@ export const DndPage = () => {
     userTags,
     updateUserTags,
     deleteTags,
+    reorder,
   } = useUserTags();
 
   const [dragInfo, setDragInfo] = useState<DragInfo>({
@@ -57,7 +58,7 @@ export const DndPage = () => {
     e.currentTarget.classList.add("exclude-me");
     setDragInfo({
       isDragging: true,
-      dragIndex: index,
+      dragIndex: index - 1,
     });
   };
 
@@ -78,18 +79,24 @@ export const DndPage = () => {
   ) => {
     e.preventDefault();
 
-    document.querySelectorAll(".slide").forEach((el) => {
-      el.classList.toggle("margin-from-bottom", false);
-      el.classList.toggle("margin-from-top", false);
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach((el) => {
+      el.classList.remove("onTop", "margin-from-bottom", "margin-from-top");
     });
 
-    if (dragInfo.dragIndex === dropIndex) return;
-
     const newSkills = [...userTags];
-    const draggedSkill = newSkills.splice(dragInfo.dragIndex!, 1)[0];
-    newSkills.splice(dropIndex, 0, draggedSkill);
+    const dropData = newSkills[dropIndex - 1];
 
-    console.log("Skills reordered:", newSkills);
+    console.log(
+      dropData,
+      newSkills[dragInfo.dragIndex!],
+      dropIndex - 1,
+      dragInfo.dragIndex
+    );
+    newSkills[dropIndex - 1] = newSkills[dragInfo.dragIndex!];
+    newSkills[dragInfo.dragIndex!] = dropData;
+    reorder(newSkills);
+    handleDragEnd();
   };
 
   return (
