@@ -3,7 +3,10 @@
 - How to run the code 
 ```bash
 pnpm install
+
+pnpm run dev
 ```
+
 
 ## Challenge one 
 <ul>
@@ -15,9 +18,7 @@ pnpm install
 
 ## Challenge two 
 <ul>
-  <li>Added DND support</li>
-  <li>Added supabase support to save tags</li>
-  <li>Added react select to add new tags</li>
+  <li>Added Css Properly</li>
 </ul> 
 
 
@@ -34,3 +35,9 @@ pnpm install
 ### Things that can be improved
 - Animation in dnd reordering
 - Css Margin flickering when hover
+
+
+
+### More Info
+- I have used chatgpt , mdn docs and youtube to understand html dnd methods.
+- For css I had to revisit how css postion properties works
