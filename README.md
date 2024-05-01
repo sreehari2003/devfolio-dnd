@@ -23,6 +23,13 @@ pnpm run dev
 
 
 
+## Tech Used
+- React js
+- Typescript
+- Css
+- Supabase
+
+
 ### Code Quality 
 
 - I have made sure to use all api call as hook
@@ -41,3 +48,8 @@ pnpm run dev
 ### More Info
 - I have used chatgpt , mdn docs and youtube to understand html dnd methods.
 - For css I had to revisit how css postion properties works
+
+
+## Folder structure
+
+<img src="./public/tree.png"/>
