@@ -8,6 +8,9 @@ pnpm run dev
 ```
 
 
+<video src="./public/preview.mov" controls></video>
+
+
 ## Challenge one 
 <ul>
   <li>Added DND support</li>

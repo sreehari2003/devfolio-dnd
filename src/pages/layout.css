@@ -2,13 +2,13 @@
 
 .layout {
   height: 100vh;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  color: black;
   margin-bottom: 8em;
+  align-items: center;
+  color: black;
+  font-family: "Roboto", sans-serif;
 }
 
 .layout-content {
@@ -26,6 +26,7 @@
 }
 
 .hollow-red-rectangle {
+  transform: rotate(-10deg);
   display: block;
   position: relative;
   width: 90px;
@@ -33,18 +34,17 @@
   top: 40%;
   left: 1%;
   border: 18px solid #e7084b;
-  transform: rotate(-10deg);
 }
 
 .hollow-blue-rectangle {
   display: block;
   position: relative;
   width: 35px;
+  transform: rotate(45deg);
   height: 35px;
   top: 15%;
   left: 10%;
   border: 12px solid #0065f5;
-  transform: rotate(45deg);
 }
 
 .filled-pink-rectangle {
@@ -115,11 +115,11 @@
   position: absolute;
   width: 172px;
   height: 172px;
+  filter: blur(6px);
   top: 29%;
   left: 85%;
   border: 28px solid #f3b018;
   border-radius: 50%;
-  filter: blur(6px);
 }
 
 .sub-footer {
@@ -247,10 +247,10 @@
 
   .blurred-circle {
     width: 86px;
+    filter: blur(4px);
     height: 86px;
     top: 32%;
     left: 85%;
     border: 14px solid #f3b018;
-    filter: blur(4px);
   }
 }
