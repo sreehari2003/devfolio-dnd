@@ -9,7 +9,11 @@ pnpm run dev
 
 
 
-<video src="https://youtu.be/zQ_b8zBthoI" controls width="600px" height="600px"></video>
+
+
+https://github.com/sreehari2003/devfolio-dnd/assets/66205494/07c95fbd-afd8-4f3a-8f48-17aca21aeb39
+
+
 
 
 ## Challenge one 
