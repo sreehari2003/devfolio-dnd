@@ -8,7 +8,8 @@ pnpm run dev
 ```
 
 
-<video src="./public/preview.mov" controls></video>
+
+<video src="https://youtu.be/zQ_b8zBthoI" controls width="600px" height="600px"></video>
 
 
 ## Challenge one 
